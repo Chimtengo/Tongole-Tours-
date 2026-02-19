@@ -93,10 +93,10 @@ export default function About() {
         <div className="absolute inset-0 bg-midnight/75" />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <span className="font-body text-earth-300 text-xs tracking-widest uppercase">Who We Are</span>
-          <h1 className="font-display text-white text-5xl md:text-7xl font-bold mt-3 mb-6">
+          <h1 className="font-display text-white text-4xl sm:text-5xl md:text-7xl font-bold mt-3 mb-6">
             About <em className="text-earth-300 not-italic">Tongole Tours</em>
           </h1>
-          <p className="font-accent text-white/70 text-xl italic max-w-2xl">
+          <p className="font-accent text-white/70 text-base sm:text-xl italic max-w-2xl">
             "Experience Malawi the indigenous way"
           </p>
         </div>

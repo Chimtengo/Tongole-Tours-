@@ -37,8 +37,8 @@ export default async function TourDetailsPage({ params }: TourPageProps) {
             Back to Tours
           </Link>
           <p className="font-body text-earth-300 text-xs tracking-widest uppercase mb-2">{tour.type}</p>
-          <h1 className="font-display text-white text-4xl md:text-6xl font-bold mb-3">{tour.name}</h1>
-          <p className="font-accent text-earth-200 text-xl italic">{tour.subtitle}</p>
+          <h1 className="font-display text-white text-3xl sm:text-4xl md:text-6xl font-bold mb-3">{tour.name}</h1>
+          <p className="font-accent text-earth-200 text-base sm:text-xl italic">{tour.subtitle}</p>
         </div>
         <div
           className="absolute bottom-0 left-0 right-0 h-20"

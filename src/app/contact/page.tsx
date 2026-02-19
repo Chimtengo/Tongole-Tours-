@@ -36,10 +36,10 @@ export default function Contact() {
         <div className="absolute inset-0 bg-midnight/80" />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <span className="font-body text-earth-300 text-xs tracking-widest uppercase">Get In Touch</span>
-          <h1 className="font-display text-white text-5xl md:text-7xl font-bold mt-3 mb-6">
+          <h1 className="font-display text-white text-4xl sm:text-5xl md:text-7xl font-bold mt-3 mb-6">
             Plan Your <em className="text-earth-300 not-italic">Journey</em>
           </h1>
-          <p className="font-accent text-white/70 text-xl italic max-w-2xl">
+          <p className="font-accent text-white/70 text-base sm:text-xl italic max-w-2xl">
             Let us craft your perfect Malawi experience
           </p>
         </div>
@@ -100,7 +100,7 @@ export default function Contact() {
             </div>
 
             {/* Right — Form */}
-            <div className="md:col-span-3 bg-white p-10 border border-earth-100">
+            <div className="md:col-span-3 bg-white p-6 sm:p-8 lg:p-10 border border-earth-100">
               {submitted ? (
                 <div className="text-center py-16">
                   <div className="text-6xl mb-6">🌍</div>

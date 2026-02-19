@@ -5,21 +5,21 @@ import Link from 'next/link'
 
 const slides = [
   {
-    bg: '/hero/slide-1.jpg',
+    bg: '/hero/slide-1.webp',
     title: 'Experience Malawi',
     titleEm: 'The Indigenous Way',
     subtitle: 'Experience Malawi the indigenous way',
     tag: 'Tongole Tours',
   },
   {
-    bg: '/hero/slide-2.jpg',
+    bg: '/hero/slide-2.webp',
     title: 'Immersive Cultural,',
     titleEm: 'Wilderness & Adventure Experiences',
     subtitle: 'Authentic journeys across wildlife, lake, and cultural destinations in Malawi',
     tag: 'What We Offer',
   },
   {
-    bg: '/hero/slide-3.jpg',
+    bg: '/hero/slide-3.webp',
     title: 'For Local, Regional,',
     titleEm: 'and International Travellers',
     subtitle: 'Responsible travel that empowers communities and protects natural heritage',
@@ -40,7 +40,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative h-screen min-h-[600px] overflow-hidden">
+    <section className="relative h-screen min-h-[520px] overflow-hidden">
       {/* Slides */}
       {slides.map((slide, i) => (
         <div
@@ -92,13 +92,13 @@ export default function Hero() {
             </div>
 
             {/* Main title */}
-            <h1 className="font-display text-white text-5xl md:text-7xl font-bold leading-tight mb-4 hero-title">
+            <h1 className="font-display text-white text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-4 hero-title">
               {slides[current].title}
               <br />
               <em className="text-earth-300 not-italic">{slides[current].titleEm}</em>
             </h1>
 
-            <p className="hero-subtitle font-accent text-white/80 text-xl md:text-2xl italic mb-10 font-light">
+            <p className="hero-subtitle font-accent text-white/80 text-base sm:text-xl md:text-2xl italic mb-10 font-light">
               "{slides[current].subtitle}"
             </p>
 
@@ -106,13 +106,13 @@ export default function Hero() {
             <div className="hero-cta flex flex-col sm:flex-row gap-4">
               <Link
                 href="/tours"
-                className="btn-primary bg-earth-500 hover:bg-earth-400 text-white px-8 py-4 font-body text-sm tracking-widest uppercase transition-all inline-block text-center"
+                className="btn-primary bg-earth-500 hover:bg-earth-400 text-white px-6 py-3 sm:px-8 sm:py-4 font-body text-sm tracking-widest uppercase transition-all inline-block text-center"
               >
                 Explore Tours
               </Link>
               <Link
                 href="/about"
-                className="border border-white/50 hover:border-earth-300 text-white hover:text-earth-300 px-8 py-4 font-body text-sm tracking-widest uppercase transition-all inline-block text-center backdrop-blur-sm"
+                className="border border-white/50 hover:border-earth-300 text-white hover:text-earth-300 px-6 py-3 sm:px-8 sm:py-4 font-body text-sm tracking-widest uppercase transition-all inline-block text-center backdrop-blur-sm"
               >
                 Our Story
               </Link>

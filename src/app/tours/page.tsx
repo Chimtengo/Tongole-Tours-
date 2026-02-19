@@ -24,10 +24,10 @@ export default function Tours() {
         <div className="absolute inset-0 bg-midnight/75" />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <span className="font-body text-earth-300 text-xs tracking-widest uppercase">Signature Journeys</span>
-          <h1 className="font-display text-white text-5xl md:text-7xl font-bold mt-3 mb-6">
+          <h1 className="font-display text-white text-4xl sm:text-5xl md:text-7xl font-bold mt-3 mb-6">
             Our <em className="text-earth-300 not-italic">Tours</em>
           </h1>
-          <p className="font-accent text-white/70 text-xl italic max-w-2xl">
+          <p className="font-accent text-white/70 text-base sm:text-xl italic max-w-2xl">
             7 immersive ways to discover the real Malawi
           </p>
         </div>
@@ -80,7 +80,7 @@ export default function Tours() {
                   </div>
                 </div>
 
-                <div className={`p-10 bg-white flex flex-col justify-center ${i % 2 === 1 ? 'md:order-1' : ''}`}>
+                <div className={`p-6 sm:p-8 lg:p-10 bg-white flex flex-col justify-center ${i % 2 === 1 ? 'md:order-1' : ''}`}>
                   <div className="flex items-center gap-3 mb-4">
                     <span className="font-display text-earth-400 text-3xl font-bold">
                       0{tour.id}

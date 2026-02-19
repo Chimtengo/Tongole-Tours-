@@ -25,8 +25,16 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', handleScroll)
+    let ticking = false
+    const handleScroll = () => {
+      if (ticking) return
+      ticking = true
+      window.requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 60)
+        ticking = false
+      })
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 

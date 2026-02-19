@@ -216,3 +216,40 @@ body {
   opacity: 0.04;
   z-index: 9999;
 }
+
+@media (max-width: 768px) {
+  .grain::before {
+    opacity: 0.02;
+  }
+}
+
+@media (hover: none) {
+  .tour-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .group:hover .group-hover\:scale-110,
+  .group:hover .group-hover\:scale-105 {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .section-reveal,
+  .reveal-left,
+  .reveal-right,
+  .hero-title,
+  .hero-subtitle,
+  .hero-cta,
+  .tour-card,
+  .marquee-content {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
