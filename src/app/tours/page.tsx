@@ -1,14 +1,15 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { tours } from '../data/tours'
 
 const services = [
-  { icon: '??', name: 'Safari Tours', desc: 'Guided tours to Liwonde, Majete, Nyika' },
-  { icon: '??', name: 'Lake Malawi Packages', desc: 'Beach holidays, snorkelling, island tours' },
-  { icon: '???', name: 'Cultural Tours', desc: 'Village visits, festivals, museums' },
-  { icon: '???', name: 'Adventure Tourism', desc: 'Hiking Mount Mulanje and Zomba Plateau' },
-  { icon: '??', name: 'Travel Planning', desc: 'Customized itineraries and bookings' },
+  { icon: '', name: 'Safari Tours', desc: 'Guided tours to Liwonde, Majete, Nyika' },
+  { icon: '', name: 'Lake Malawi Packages', desc: 'Beach holidays, snorkelling, island tours' },
+  { icon: '', name: 'Cultural Tours', desc: 'Village visits, festivals, museums' },
+  { icon: '', name: 'Adventure Tourism', desc: 'Hiking Mount Mulanje and Zomba Plateau' },
+  { icon: '', name: 'Travel Planning', desc: 'Customized itineraries and bookings' },
 ]
 
 export default function Tours() {
@@ -63,13 +64,15 @@ export default function Tours() {
             {tours.map((tour, i) => (
               <div
                 key={tour.slug}
-                className="grid md:grid-cols-2 gap-0 overflow-hidden border border-earth-100 hover:shadow-2xl transition-shadow"
+                className="group grid md:grid-cols-2 gap-0 overflow-hidden border border-earth-100 hover:shadow-2xl transition-shadow"
               >
-                <div className={`relative h-72 md:h-auto overflow-hidden ${i % 2 === 1 ? 'md:order-2' : ''}`}>
-                  <img
+                <div className={`relative aspect-[4/3] overflow-hidden ${i % 2 === 1 ? 'md:order-2' : ''}`}>
+                  <Image
                     src={tour.image}
                     alt={tour.name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-midnight/50 to-transparent" />
                   <div className="absolute bottom-4 left-4 bg-earth-500/90 text-white px-3 py-1 text-xs font-body tracking-widest uppercase">

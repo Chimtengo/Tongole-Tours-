@@ -1,8 +1,39 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { tours } from '../data/tours'
+
+const TOUR_IMAGE_BY_SLUG: Record<string, string> = {
+  'forest-lake-drive': '/images/tours/forest-lake-drive.jpg',
+  'wings-over-malawi': '/images/tours/wings-over-malawi.jpg',
+  'explore-malawi': '/images/tours/explore-malawi.jpg',
+  'ultimate-big-5': '/images/tours/ultimate-big-5.jpg',
+  'nature-experience': '/images/tours/nature-experience.jpg',
+  'hiking-trekking': '/images/tours/hiking-trekking.jpg',
+  'nyasa-experience': '/images/tours/nyasa-experience.jpg',
+}
+
+const TOUR_IMAGE_FALLBACK = '/images/wilderness.jpg'
+
+function TourImage({ slug, alt }: { slug: string; alt: string }) {
+  const primarySrc = TOUR_IMAGE_BY_SLUG[slug] ?? TOUR_IMAGE_FALLBACK
+  const [src, setSrc] = useState(primarySrc)
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      className="object-cover group-hover:scale-110 transition-transform duration-700"
+      onError={() => {
+        if (src !== TOUR_IMAGE_FALLBACK) setSrc(TOUR_IMAGE_FALLBACK)
+      }}
+    />
+  )
+}
 
 export default function ToursSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -50,12 +81,8 @@ export default function ToursSection() {
               href={`/tours/${tour.slug}`}
               className={`tour-card section-reveal delay-${((i % 3) + 1) * 100} group bg-white border border-gray-100 overflow-hidden cursor-pointer`}
             >
-              <div className="relative h-52 overflow-hidden">
-                <img
-                  src={tour.image}
-                  alt={tour.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <TourImage slug={tour.slug} alt={tour.name} />
                 <div className="absolute inset-0 bg-gradient-to-t from-midnight/60 to-transparent" />
                 <div className="absolute top-4 left-4 bg-earth-500/90 text-white px-3 py-1 text-xs font-body tracking-widest uppercase">
                   {tour.type}

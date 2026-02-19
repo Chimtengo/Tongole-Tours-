@@ -186,11 +186,13 @@ export default function About() {
                 ))}
               </div>
             </div>
-            <div>
-              <img
+            <div className="relative h-[360px] md:h-[450px]">
+              <Image
                 src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80"
                 alt="Conservation"
-                className="w-full h-[450px] object-cover opacity-80"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover opacity-80"
               />
             </div>
           </div>

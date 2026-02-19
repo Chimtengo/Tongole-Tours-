@@ -156,7 +156,7 @@ export default function WhySection() {
               <div className="relative">
                 <div className="relative h-[360px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1541795083-4cbb9a3f7acf?w=1200&q=80"
+                    src="/images/wilderness.jpg"
                     alt="Malawi landscape and wilderness"
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -166,7 +166,7 @@ export default function WhySection() {
 
                 <div className="hidden md:block absolute top-8 -right-10 w-52 h-64 rounded-lg overflow-hidden border-4 border-fdf8f0 shadow-xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1528127269322-539801943592?w=700&q=80"
+                    src="/images/cultural.jpg"
                     alt="Cultural experience in Malawi"
                     fill
                     sizes="208px"
@@ -220,4 +220,3 @@ export default function WhySection() {
     </div>
   )
 }
-
