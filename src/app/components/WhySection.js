@@ -12,22 +12,22 @@ const stats = [
 
 const features = [
   {
-    icon: '🦁',
+    icon: '',
     title: 'Wildlife Safaris',
     desc: 'Game drives through Liwonde, Majete and Nkhotakota with expert local guides who know every trail.',
   },
   {
-    icon: '🏔️',
+    icon: '',
     title: 'Adventure & Trekking',
     desc: 'Summit Mulanje Mountain, trek Zomba Plateau, and explore Malawi\'s dramatic peaks and valleys.',
   },
   {
-    icon: '🌊',
+    icon: '',
     title: 'Lake Malawi Escapes',
     desc: 'Island hopping, snorkelling, kayaking, and beach bliss on the warm shores of the Calendar Lake.',
   },
   {
-    icon: '🏘️',
+    icon: '',
     title: 'Cultural Immersion',
     desc: 'Village visits, traditional cuisine, artisan workshops and storytelling rooted in real Malawian heritage.',
   },
