@@ -43,7 +43,6 @@ export default function Contact() {
             Let us craft your perfect Malawi experience
           </p>
         </div>
-        <div className="diagonal-cut" />
       </section>
 
       {/* ── Main section ── */}

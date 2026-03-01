@@ -145,15 +145,8 @@ body {
 }
 .btn-shimmer:hover::before { left: 100%; }
 
-/* ─── Diagonal page-hero cut ─────────────────────────────── */
-.diagonal-cut {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(to bottom right, transparent 49%, #fdf8f0 50%);
-}
-
-/* ─── Scrollbar ──────────────────────────────────────────── */
+/* Scrollbar */
 ::-webkit-scrollbar       { width: 6px; }
 ::-webkit-scrollbar-track { background: #f0e8d8; }
 ::-webkit-scrollbar-thumb { background: #a85c18; border-radius: 3px; }
+

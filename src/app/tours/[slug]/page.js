@@ -36,11 +36,6 @@ export default async function TourDetailPage({ params }) {
           className="absolute inset-0 w-full h-full object-cover ken-burns"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-midnight/60 via-midnight/30 to-midnight/80" />
-        <div
-          className="absolute bottom-0 left-0 right-0 h-24 z-10"
-          style={{ background: 'linear-gradient(to bottom right, transparent 49%, #fdf8f0 50%)' }}
-        />
-
         <div className="relative z-10 h-full flex items-center">
           <div className="max-w-7xl mx-auto px-6 w-full pt-24">
 
@@ -73,7 +68,6 @@ export default async function TourDetailPage({ params }) {
               {[
                 { icon: '🗓️', label: 'Duration', value: tour.duration },
                 { icon: '👥', label: 'Best For',  value: tour.target },
-                { icon: '💰', label: 'Price',     value: tour.price },
               ].map((stat, i) => (
                 <div key={i} className="bg-midnight/60 backdrop-blur-sm border border-white/20 px-5 py-3">
                   <div className="font-body text-white/50 text-xs tracking-widest uppercase mb-1">
@@ -89,62 +83,6 @@ export default async function TourDetailPage({ params }) {
         {/* Scroll cue */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
           <div className="w-px h-10 bg-gradient-to-b from-white/60 to-transparent animate-bounce" />
-        </div>
-      </section>
-
-      {/* ── OVERVIEW ── */}
-      <section className="py-24 bg-earth-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-12">
-
-            {/* Overview text */}
-            <div className="md:col-span-2">
-              <span className="font-body text-earth-500 text-xs tracking-widest uppercase">
-                The Journey
-              </span>
-              <h2 className="font-display text-midnight text-4xl font-bold mt-3 mb-6 leading-tight">
-                Overview
-              </h2>
-              <p className="font-body text-gray-600 text-lg leading-relaxed mb-8">
-                {tour.overview}
-              </p>
-
-              {/* Route display */}
-              <div className="bg-midnight p-6">
-                <div className="font-body text-earth-400 text-xs tracking-widest uppercase mb-3">
-                  Route
-                </div>
-                <div className="flex flex-wrap items-center gap-2">
-                  {tour.route.split(' → ').map((stop, i, arr) => (
-                    <span key={i} className="flex items-center gap-2">
-                      <span className="font-body text-white text-sm">{stop}</span>
-                      {i < arr.length - 1 && (
-                        <span className="text-earth-400 text-base font-bold">→</span>
-                      )}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Highlights */}
-            <div>
-              <span className="font-body text-earth-500 text-xs tracking-widest uppercase">
-                Highlights
-              </span>
-              <h3 className="font-display text-midnight text-2xl font-bold mt-3 mb-6">
-                What to Expect
-              </h3>
-              <div className="space-y-3">
-                {tour.highlights.map((h, i) => (
-                  <div key={i} className="flex items-start gap-3 p-4 bg-white border border-earth-100">
-                    <span className="text-forest-500 font-bold text-lg leading-none mt-0.5">✓</span>
-                    <span className="font-body text-gray-700 text-sm leading-relaxed">{h}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -315,7 +253,7 @@ export default async function TourDetailPage({ params }) {
           </div>
 
           <p className="font-body text-white/40 text-sm">
-            {tour.price} &nbsp;·&nbsp; {tour.duration} &nbsp;·&nbsp; Expert local guide included
+            {tour.duration} &nbsp;·&nbsp; Expert local guide included
           </p>
         </div>
       </section>

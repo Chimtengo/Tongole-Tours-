@@ -57,7 +57,6 @@ export default function About() {
             &ldquo;Experience Malawi the indigenous way&rdquo;
           </p>
         </div>
-        <div className="diagonal-cut" />
       </section>
 
       {/* ── Vision / Mission / Story ── */}

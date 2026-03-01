@@ -4,11 +4,11 @@ import Link from 'next/link'
 import { tours } from '../data/tours'
 
 const services = [
-  { icon: '🦁', name: 'Safari Tours',        desc: 'Liwonde, Majete, Nyika' },
-  { icon: '🌊', name: 'Lake Malawi',          desc: 'Beaches, islands, snorkelling' },
-  { icon: '🏘️', name: 'Cultural Tours',       desc: 'Village visits, festivals' },
-  { icon: '🏔️', name: 'Adventure & Trekking', desc: 'Mulanje, Zomba, and more' },
-  { icon: '📋', name: 'Custom Planning',       desc: 'Tailor-made itineraries' },
+  { icon: '', name: 'Safari Tours',        desc: 'Liwonde, Majete, Nyika' },
+  { icon: '', name: 'Lake Malawi',          desc: 'Beaches, islands, snorkelling' },
+  { icon: '', name: 'Cultural Tours',       desc: 'Village visits, festivals' },
+  { icon: '', name: 'Adventure & Trekking', desc: 'Mulanje, Zomba, and more' },
+  { icon: '', name: 'Custom Planning',       desc: 'Tailor-made itineraries' },
 ]
 
 export default function Tours() {
@@ -33,7 +33,6 @@ export default function Tours() {
             7 immersive ways to discover the real Malawi
           </p>
         </div>
-        <div className="diagonal-cut" />
       </section>
 
       {/* ── Services overview ── */}

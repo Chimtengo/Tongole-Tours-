@@ -51,11 +51,6 @@ export default function Hero() {
 
       {/* ── Overlays ── */}
       <div className="absolute inset-0 bg-gradient-to-b from-midnight/70 via-midnight/35 to-midnight/80 z-10" />
-      {/* Diagonal cut at bottom */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-24 z-10"
-        style={{ background: 'linear-gradient(to bottom right, transparent 49%, #fdf8f0 50%)' }}
-      />
 
       {/* ── Content ── */}
       <div className="relative z-20 h-full flex items-center">
