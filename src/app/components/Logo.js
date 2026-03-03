@@ -22,7 +22,7 @@ export default function Logo({ size = 'md', dark = true }) {
     <Link href="/" className="flex items-center group select-none">
       <div style={{ width: s.w, height: s.h, position: 'relative', flexShrink: 0 }}>
         <Image
-          src="/logo.png"
+          src="/logo.jpeg"
           alt="Tongole Tours and Travel"
           fill
           className="object-contain transition-opacity duration-300 group-hover:opacity-85"

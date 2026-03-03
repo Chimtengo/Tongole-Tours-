@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import Link from 'next/link'
 
 const stats = [
   { value: 7,   suffix: '+',  label: 'Signature Itineraries'},
@@ -24,7 +23,7 @@ const features = [
   {
     icon: '',
     title: 'Lake Malawi Escapes',
-    desc: 'Island hopping, snorkelling, kayaking, and beach bliss on the warm shores of the Calendar Lake.',
+    desc: 'Island hopping, snorkelling, kayaking, Boat Safari and beach bliss on the warm shores of the Calendar Lake.',
   },
   {
     icon: '',
@@ -137,74 +136,6 @@ export default function WhySection() {
                 <div className="font-body text-white/60 text-sm tracking-wide">{s.label}</div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── About snippet ── */}
-      <section className="py-28 bg-earth-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-
-            {/* Image block */}
-            <div className="reveal-left">
-              <div className="relative">
-                <img
-                  src="https://images.unsplash.com/photo-1541795083-4cbb9a3f7acf?w=800&q=80"
-                  alt="Malawi landscape"
-                  className="w-full h-[480px] object-cover"
-                />
-                {/* Offset decorative boxes */}
-                <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-earth-400/20 border border-earth-300 -z-10" />
-                <div className="absolute -top-6  -left-6  w-32 h-32 bg-forest-200/30 border border-forest-300 -z-10" />
-                {/* Quote bar */}
-                <div className="absolute bottom-6 left-6 right-6 bg-midnight/80 backdrop-blur-sm p-4">
-                  <p className="font-accent text-earth-300 italic text-sm">
-                    &ldquo;Experience Malawi the indigenous way&rdquo;
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Text block */}
-            <div className="reveal-right">
-              <span className="font-body text-earth-500 text-xs tracking-widest uppercase">
-                Who We Are
-              </span>
-              <h2 className="font-display text-midnight text-4xl font-bold mt-3 mb-6 leading-tight">
-                Tongole Tours —<br />
-                <em className="text-earth-500 not-italic">
-                  Malawi&rsquo;s Indigenous Tour Operator
-                </em>
-              </h2>
-              <p className="font-body text-gray-600 text-base leading-relaxed mb-4">
-                Tongole Tours is an indigenous Malawian-run tour company dedicated to delivering
-                immersive cultural, wilderness, and adventure experiences. We connect local,
-                regional, and international travellers to the authentic soul of Malawi.
-              </p>
-              <p className="font-body text-gray-600 text-base leading-relaxed mb-8">
-                Guided by locals who know the land intimately, our tours immerse guests in real
-                Malawian culture, wildlife, and adventure — while empowering communities and
-                protecting natural heritage.
-              </p>
-
-              <div className="grid grid-cols-2 gap-3 mb-8">
-                {['Authenticity', 'Community Empowerment', 'Environmental Stewardship', 'Excellence in Service'].map((v, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-earth-400 flex-shrink-0" />
-                    <span className="font-body text-sm text-gray-700">{v}</span>
-                  </div>
-                ))}
-              </div>
-
-              <Link
-                href="/about"
-                className="btn-shimmer inline-block bg-midnight hover:bg-dusk text-white
-                           px-8 py-3 font-body text-sm tracking-widest uppercase transition-colors"
-              >
-                Our Full Story
-              </Link>
-            </div>
           </div>
         </div>
       </section>

@@ -24,13 +24,10 @@ export default function ToursSection() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 section-reveal">
           <div>
-            <span className="font-body text-earth-500 text-xs tracking-widest uppercase">
-              Our Signature Journeys
-            </span>
             <h2 className="font-display text-midnight text-4xl md:text-5xl font-bold mt-3">
-              7 Ways to Experience<br />
-              <em className="text-earth-400 not-italic">Malawi</em>
+              Our Signature Journeys
             </h2>
+            
           </div>
           <Link
             href="/tours"
