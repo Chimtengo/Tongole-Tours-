@@ -2,6 +2,7 @@ import Navbar       from './components/Navbar'
 import Hero         from './components/Hero'
 import WhySection   from './components/WhySection'
 import ToursSection from './components/ToursSection'
+import CustomersSection from './components/CustomersSection'
 import FAQ          from './components/FAQ'
 import Partners     from './components/Partners'
 import Footer       from './components/Footer'
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <WhySection />
       <ToursSection />
+      <CustomersSection />
       <FAQ />
       <Partners />
       <Footer />

@@ -2,30 +2,44 @@ import Link from 'next/link'
 import Logo from './Logo'
 
 const exploreLinks = [
-  { label: 'Home',      href: '/' },
-  { label: 'About Us',  href: '/about' },
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
   { label: 'Our Tours', href: '/tours' },
-  { label: 'Contact',   href: '/contact' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 const tourLinks = [
-  { label: 'Forest-Lake Drive',    href: '/tours/forest-lake-drive' },
-  { label: 'Wings Over Malawi',    href: '/tours/wings-over-malawi' },
+  { label: 'Forest-Lake Drive', href: '/tours/forest-lake-drive' },
+  { label: 'Wings Over Malawi', href: '/tours/wings-over-malawi' },
   { label: 'The Big 5 Experience', href: '/tours/ultimate-big-5' },
-  { label: 'Nyasa Experience',     href: '/tours/nyasa-experience' },
-  { label: 'Hiking & Trekking',    href: '/tours/hiking-trekking' },
+  { label: 'Nyasa Experience', href: '/tours/nyasa-experience' },
+  { label: 'Hiking & Trekking', href: '/tours/hiking-trekking' },
+]
+
+const lodgeLinks = [
+  'Tongole Wilderness Retreat',
+  'Mkulumadzi Lodge',
+  'Kuthengo Lodge',
+  'Mvuu Lodge',
+  'Blue Zebra Island Lodge',
+  'Mumbo Island Lodge',
+  'Chelinda Lodge',
+  'Kaya Mawa',
+]
+
+const contactItems = [
+  { label: 'Location', value: 'Lilongwe, Malawi' },
+  { label: 'Phone 1', value: '+265 882 437 039', href: 'tel:+265882437039' },
+  { label: 'Phone 2', value: '+265 992 775 636', href: 'tel:+265992775636' },
+  { label: 'Email', value: 'info@tongoletours.com', href: 'mailto:info@tongoletours.com' },
 ]
 
 export default function Footer() {
   return (
     <footer className="bg-midnight text-white">
       <div className="max-w-7xl mx-auto px-6 pt-20 pb-10">
-
-        <div className="grid md:grid-cols-4 gap-12 mb-16">
-
-          {/* Brand column */}
+        <div className="grid md:grid-cols-5 gap-12 mb-16">
           <div className="md:col-span-2">
-            {/* Logo — screen blend mode works on dark footer */}
             <div className="mb-5">
               <Logo size="md" dark={true} />
             </div>
@@ -36,16 +50,15 @@ export default function Footer() {
             </p>
             <div className="space-y-2">
               {[
-                '🌿 Sustainable & Responsible Tourism',
-                '🤝 Community Empowerment',
-                '☀️ 100% Solar-Powered Facilities',
-              ].map((v, i) => (
-                <div key={i} className="font-body text-white/40 text-xs">{v}</div>
+                'Sustainable & Responsible Tourism',
+                'Community Empowerment',
+                '100% Solar-Powered Facilities',
+              ].map((value) => (
+                <div key={value} className="font-body text-white/40 text-xs">{value}</div>
               ))}
             </div>
           </div>
 
-          {/* Explore links */}
           <div>
             <h4 className="font-body text-xs tracking-widest uppercase text-earth-400 mb-6">Explore</h4>
             <ul className="space-y-3">
@@ -59,7 +72,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Tour links */}
           <div>
             <h4 className="font-body text-xs tracking-widest uppercase text-earth-400 mb-6">Our Tours</h4>
             <ul className="space-y-3">
@@ -72,28 +84,37 @@ export default function Footer() {
               ))}
             </ul>
           </div>
+
+          <div>
+            <h4 className="font-body text-xs tracking-widest uppercase text-earth-400 mb-6">Our Lodges</h4>
+            <ul className="space-y-3">
+              {lodgeLinks.map((lodge) => (
+                <li key={lodge} className="font-body text-white/50 text-sm">
+                  {lodge}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        {/* Contact strip */}
         <div className="border-t border-white/10 pt-10 mb-10">
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { icon: '📍', label: 'Location', value: 'Lilongwe, Malawi' },
-              { icon: '📞', label: 'Phone',    value: '+265 882 437 039  /  +265 992 775 636' },
-              { icon: '✉️', label: 'Email',    value: 'info@tongoletours.com' },
-            ].map((c, i) => (
-              <div key={i} className="flex items-start gap-3">
-                <span className="text-xl">{c.icon}</span>
-                <div>
-                  <div className="font-body text-xs text-earth-400 tracking-widest uppercase mb-1">{c.label}</div>
-                  <div className="font-body text-white/60 text-sm">{c.value}</div>
-                </div>
+          <h4 className="font-body text-xs tracking-widest uppercase text-earth-400 mb-6">Contact Us</h4>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {contactItems.map((item) => (
+              <div key={item.label}>
+                <div className="font-body text-xs text-earth-400 tracking-widest uppercase mb-2">{item.label}</div>
+                {item.href ? (
+                  <a href={item.href} className="font-body text-white/60 text-sm hover:text-earth-300 transition-colors">
+                    {item.value}
+                  </a>
+                ) : (
+                  <div className="font-body text-white/60 text-sm">{item.value}</div>
+                )}
               </div>
             ))}
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-body text-white/30 text-xs">
             &copy; {new Date().getFullYear()} Tongole Tours and Travel. All rights reserved.
@@ -106,7 +127,6 @@ export default function Footer() {
             ))}
           </div>
         </div>
-
       </div>
     </footer>
   )

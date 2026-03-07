@@ -19,7 +19,6 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function TourDetailPage({ params }) {
-  // Next.js 15: params must be awaited
   const { slug } = await params
   const tour = getTourBySlug(slug)
   if (!tour) notFound()
@@ -28,7 +27,6 @@ export default async function TourDetailPage({ params }) {
     <main>
       <Navbar />
 
-      {/* ── HERO ── */}
       <section className="relative h-screen min-h-[600px] overflow-hidden">
         <img
           src={tour.heroImage}
@@ -38,17 +36,6 @@ export default async function TourDetailPage({ params }) {
         <div className="absolute inset-0 bg-gradient-to-b from-midnight/60 via-midnight/30 to-midnight/80" />
         <div className="relative z-10 h-full flex items-center">
           <div className="max-w-7xl mx-auto px-6 w-full pt-24">
-
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 mb-6 text-white/50 text-xs font-body tracking-widest uppercase">
-              <Link href="/" className="hover:text-earth-300 transition-colors">Home</Link>
-              <span>/</span>
-              <Link href="/tours" className="hover:text-earth-300 transition-colors">Tours</Link>
-              <span>/</span>
-              <span className="text-earth-300">{tour.name}</span>
-            </div>
-
-            {/* Type badge */}
             <div className="inline-block bg-earth-500/80 text-white px-4 py-1.5 text-xs font-body tracking-widest uppercase mb-5">
               {tour.type}
             </div>
@@ -63,11 +50,10 @@ export default async function TourDetailPage({ params }) {
               {tour.tagline}
             </p>
 
-            {/* Quick stats */}
             <div className="hero-cta flex flex-wrap gap-4">
               {[
                 { icon: '🗓️', label: 'Duration', value: tour.duration },
-                { icon: '👥', label: 'Best For',  value: tour.target },
+                { icon: '👥', label: 'Best For', value: tour.target },
               ].map((stat, i) => (
                 <div key={i} className="bg-midnight/60 backdrop-blur-sm border border-white/20 px-5 py-3">
                   <div className="font-body text-white/50 text-xs tracking-widest uppercase mb-1">
@@ -80,13 +66,11 @@ export default async function TourDetailPage({ params }) {
           </div>
         </div>
 
-        {/* Scroll cue */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
           <div className="w-px h-10 bg-gradient-to-b from-white/60 to-transparent animate-bounce" />
         </div>
       </section>
 
-      {/* ── EXPERIENCES ── */}
       <section className="py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -100,9 +84,7 @@ export default async function TourDetailPage({ params }) {
 
           <div className="space-y-16">
             {tour.experiences.map((exp, i) => (
-              <div key={i} className={`grid md:grid-cols-2 overflow-hidden shadow-xl`}>
-
-                {/* Image */}
+              <div key={i} className="grid md:grid-cols-2 overflow-hidden shadow-xl">
                 <div className={`relative h-72 md:h-auto min-h-[320px] overflow-hidden ${i % 2 === 1 ? 'md:order-2' : ''}`}>
                   <img
                     src={exp.image}
@@ -115,7 +97,6 @@ export default async function TourDetailPage({ params }) {
                   </div>
                 </div>
 
-                {/* Text */}
                 <div className={`p-10 md:p-14 bg-earth-50 flex flex-col justify-center ${i % 2 === 1 ? 'md:order-1' : ''}`}>
                   <div className="w-12 h-0.5 bg-earth-400 mb-5" />
                   <h3 className="font-display text-midnight text-2xl md:text-3xl font-bold mb-5 leading-tight">
@@ -131,7 +112,6 @@ export default async function TourDetailPage({ params }) {
         </div>
       </section>
 
-      {/* ── ITINERARY ── */}
       <section className="py-28 bg-midnight">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -146,7 +126,6 @@ export default async function TourDetailPage({ params }) {
           <div className="max-w-3xl mx-auto">
             {tour.itinerary.map((item, i) => (
               <div key={i} className="flex gap-6 mb-6 last:mb-0">
-                {/* Timeline */}
                 <div className="flex flex-col items-center flex-shrink-0">
                   <div className="w-10 h-10 rounded-full bg-earth-500 flex items-center justify-center">
                     <span className="text-white text-xs font-bold">{i + 1}</span>
@@ -156,7 +135,6 @@ export default async function TourDetailPage({ params }) {
                   )}
                 </div>
 
-                {/* Content */}
                 <div className="pb-6">
                   <div className="font-body text-earth-400 text-xs tracking-widest uppercase mb-1">
                     {item.day}
@@ -170,13 +148,12 @@ export default async function TourDetailPage({ params }) {
         </div>
       </section>
 
-      {/* ── INCLUDED / NOT INCLUDED ── */}
       <section className="py-24 bg-earth-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white p-8 border-l-4 border-forest-500">
               <h3 className="font-display text-midnight text-2xl font-bold mb-6">
-                ✓ What&rsquo;s Included
+                Included
               </h3>
               <ul className="space-y-3">
                 {tour.included.map((item, i) => (
@@ -190,7 +167,7 @@ export default async function TourDetailPage({ params }) {
 
             <div className="bg-white p-8 border-l-4 border-earth-400">
               <h3 className="font-display text-midnight text-2xl font-bold mb-6">
-                ○ Not Included
+                Not Included
               </h3>
               <ul className="space-y-3">
                 {tour.notIncluded.map((item, i) => (
@@ -205,7 +182,6 @@ export default async function TourDetailPage({ params }) {
         </div>
       </section>
 
-      {/* ── PHOTO STRIP ── */}
       <section className="grid grid-cols-4 h-48 md:h-64">
         {tour.experiences.map((exp, i) => (
           <div key={i} className="relative overflow-hidden">
@@ -219,7 +195,6 @@ export default async function TourDetailPage({ params }) {
         ))}
       </section>
 
-      {/* ── BOOKING CTA ── */}
       <section
         className="relative py-28 bg-cover bg-center"
         style={{ backgroundImage: `url(${tour.image})` }}
@@ -258,7 +233,6 @@ export default async function TourDetailPage({ params }) {
         </div>
       </section>
 
-      {/* ── OTHER TOURS ── */}
       <section className="py-20 bg-earth-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -275,10 +249,9 @@ export default async function TourDetailPage({ params }) {
               .filter((t) => t.slug !== tour.slug)
               .slice(0, 3)
               .map((t) => (
-                <Link
+                <article
                   key={t.slug}
-                  href={`/tours/${t.slug}`}
-                  className="tour-card group bg-white border border-earth-100 overflow-hidden block"
+                  className="tour-card group bg-white border border-earth-100 overflow-hidden"
                 >
                   <div className="relative h-44 overflow-hidden">
                     <img
@@ -292,16 +265,29 @@ export default async function TourDetailPage({ params }) {
                     </div>
                   </div>
                   <div className="p-5">
-                    <h3 className="font-display text-midnight text-lg font-bold mb-1">{t.name}</h3>
+                    <Link href={`/tours/${t.slug}`} className="block">
+                      <h3 className="font-display text-midnight text-lg font-bold mb-1">{t.name}</h3>
+                    </Link>
                     <p className="font-accent text-earth-500 italic text-sm mb-3">{t.subtitle}</p>
                     <div className="flex items-center justify-between">
                       <span className="font-body text-xs text-gray-400">{t.duration}</span>
-                      <span className="font-body text-xs text-earth-500 tracking-wider uppercase group-hover:text-midnight transition-colors">
-                        View →
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <Link
+                          href={`/tours/${t.slug}`}
+                          className="font-body text-xs text-earth-500 tracking-wider uppercase group-hover:text-midnight transition-colors"
+                        >
+                          View -&gt;
+                        </Link>
+                        <Link
+                          href={`/contact?tour=${t.slug}`}
+                          className="btn-shimmer bg-earth-500 hover:bg-earth-400 text-white px-3 py-1.5 text-[10px] font-body tracking-widest uppercase transition-colors"
+                        >
+                          Book Now
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </Link>
+                </article>
               ))}
           </div>
         </div>

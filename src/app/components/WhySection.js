@@ -85,13 +85,10 @@ export default function WhySection() {
         <div className="max-w-7xl mx-auto px-6">
 
           <div className="text-center mb-16 section-reveal">
-            <span className="font-body text-earth-500 text-xs tracking-widest uppercase">
+            <span className="font-display text-midnight text-4xl md:text-5xl font-bold mt-3 block">
               Why Choose Us
             </span>
-            <h2 className="font-display text-midnight text-4xl md:text-5xl font-bold mt-3 mb-5">
-              How Tongole Tours Serves
-            </h2>
-            <p className="font-body text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
+            <p className="font-body text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed mt-5">
               Driving excellence in travel through key focus areas that support communities
               and protect Malawi&rsquo;s natural heritage for generations to come.
             </p>
