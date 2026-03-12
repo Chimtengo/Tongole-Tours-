@@ -228,6 +228,32 @@ export default function Contact() {
         </div>
       </section>
 
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <span className="font-body text-earth-500 text-xs tracking-widest uppercase">
+              Find Us
+            </span>
+            <h2 className="font-display text-midnight text-3xl md:text-4xl font-bold mt-3">
+              Tongole Wilderness Lodge
+            </h2>
+          </div>
+
+          <div className="overflow-hidden border border-earth-100 shadow-lg bg-white">
+            <div className="aspect-[16/9] w-full">
+              <iframe
+                title="Tongole Wilderness Lodge Map"
+                src="https://www.google.com/maps/place/Tongole+Wilderness+Lodge/@-12.8088381,34.1881717,10.25z/data=!4m10!3m9!1s0x191e43c58003bb39:0x3a76337950cd4eae!5m3!1s2026-04-03!4m1!1i2!8m2!3d-12.9112962!4d34.0502049!16s%2Fg%2F1tff0f15!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDMwOS4wIKXMDSoASAFQAw%3D%3D"
+                className="w-full h-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   )

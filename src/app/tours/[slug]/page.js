@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { tours, getTourBySlug } from '../../data/tours'
+import { getLodgeByName } from '../../data/lodges'
 
 export async function generateStaticParams() {
   return tours.map((tour) => ({ slug: tour.slug }))
@@ -22,6 +23,56 @@ export default async function TourDetailPage({ params }) {
   const { slug } = await params
   const tour = getTourBySlug(slug)
   if (!tour) notFound()
+  const itineraryRows = tour.itineraryTable || []
+  const accommodationSchedule = itineraryRows.reduce((acc, item) => {
+    if (!item?.accommodation) return acc
+    const lodge = getLodgeByName(item.accommodation)
+    const name = lodge?.name || item.accommodation
+    if (!acc[name]) acc[name] = []
+    if (item.day && !acc[name].includes(item.day)) {
+      acc[name].push(item.day)
+    }
+    return acc
+  }, {})
+  const formatDayRanges = (days) => {
+    const numbers = days
+      .map((day) => {
+        const match = String(day).match(/\d+/)
+        return match ? Number(match[0]) : null
+      })
+      .filter((value) => Number.isFinite(value))
+      .sort((a, b) => a - b)
+
+    if (numbers.length === 0) return days.join(', ')
+
+    const ranges = []
+    let start = numbers[0]
+    let prev = numbers[0]
+
+    for (let i = 1; i < numbers.length; i += 1) {
+      const current = numbers[i]
+      if (current === prev + 1) {
+        prev = current
+        continue
+      }
+      ranges.push(start === prev ? `Day ${start}` : `Day ${start}-${prev}`)
+      start = current
+      prev = current
+    }
+    ranges.push(start === prev ? `Day ${start}` : `Day ${start}-${prev}`)
+    return ranges.join(', ')
+  }
+
+  const accommodationEntries = Object.entries(accommodationSchedule).map(([name, days], index) => {
+    const lodge = getLodgeByName(name)
+    return {
+      name,
+      days,
+      dayRange: formatDayRanges(days),
+      lodge,
+      image: tour.experiences?.[index]?.image || tour.image,
+    }
+  })
 
   return (
     <main>
@@ -83,27 +134,32 @@ export default async function TourDetailPage({ params }) {
           </div>
 
           <div className="space-y-16">
-            {tour.experiences.map((exp, i) => (
-              <div key={i} className="grid md:grid-cols-2 overflow-hidden shadow-xl">
+            {accommodationEntries.map((entry, i) => (
+              <div key={entry.name} className="grid md:grid-cols-2 overflow-hidden shadow-xl">
                 <div className={`relative h-72 md:h-auto min-h-[320px] overflow-hidden ${i % 2 === 1 ? 'md:order-2' : ''}`}>
                   <img
-                    src={exp.image}
-                    alt={exp.title}
+                    src={entry.image}
+                    alt={entry.name}
                     className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-midnight/40 to-transparent" />
-                  <div className="absolute top-6 left-6 w-12 h-12 rounded-full bg-earth-500 flex items-center justify-center">
-                    <span className="font-display text-white font-bold text-lg">{i + 1}</span>
+                  <div className="absolute top-6 left-6 w-16 h-16 rounded-full bg-earth-500 flex items-center justify-center">
+                    <span className="font-display text-white font-bold text-[10px] tracking-widest uppercase text-center px-2">
+                      {entry.dayRange}
+                    </span>
                   </div>
                 </div>
 
                 <div className={`p-10 md:p-14 bg-earth-50 flex flex-col justify-center ${i % 2 === 1 ? 'md:order-1' : ''}`}>
                   <div className="w-12 h-0.5 bg-earth-400 mb-5" />
-                  <h3 className="font-display text-midnight text-2xl md:text-3xl font-bold mb-5 leading-tight">
-                    {exp.title}
+                  <div className="font-body text-earth-500 text-xs tracking-widest uppercase mb-2">
+                    Accommodation
+                  </div>
+                  <h3 className="font-display text-midnight text-2xl md:text-3xl font-bold mb-4 leading-tight">
+                    {entry.lodge?.name || entry.name}
                   </h3>
                   <p className="font-body text-gray-600 leading-relaxed">
-                    {exp.desc}
+                    {entry.lodge?.details || 'Details to follow.'}
                   </p>
                 </div>
               </div>

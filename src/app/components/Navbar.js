@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Logo from './Logo'
+import { lodges } from '../data/lodges'
 
 function MailIcon(props) {
   return (
@@ -64,6 +65,9 @@ const mainLinks = [
 
 const TONGOLE_LODGE_NAME = 'Tongole Wilderness Retreat'
 const TONGOLE_YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/pljEv_UjYCk'
+const KACHENGA_LODGE_NAME = 'Kachenga Bush Camp'
+const KACHENGA_LODGE_URL = 'https://kachengabushcamp.mw/'
+const OUR_LODGE_NAMES = new Set(['Tongole Wilderness Retreat', 'Kachenga Bush Camp'])
 
 const buildLodgeGallery = (name, location) => {
   const slug = name
@@ -93,86 +97,7 @@ const buildLodgeGallery = (name, location) => {
   ]
 }
 
-const lodgeDetails = [
-  {
-    name: 'Tongole Wilderness Retreat',
-    location: 'Nkhotakota Wildlife Reserve',
-    details:
-      'Hidden deep within the miombo woodlands of Nkhotakota Wildlife Reserve, Tongole Wilderness Retreat is a sanctuary of raw beauty and seclusion. Elevated wooden suites are crafted from natural materials, offering panoramic views over the Bua River and surrounding forest. Guests explore on guided walks, game drives and cultural visits to nearby communities, before returning to refined cuisine and tranquil evenings by the fire.',
-  },
-  {
-    name: 'Mkulumadzi Lodge',
-    location: 'Majete Wildlife Reserve',
-    details:
-      'Tucked away at the confluence of two rivers in the heart of Majete Wildlife Reserve, Nkulumadzi Lodge offers an exclusive safari experience in one of Malawi\'s most inspiring conservation success stories. Elevated chalets overlook the Shire River, blending seamlessly into the surrounding wilderness. Days are spent on expertly guided game drives in search of elephant, buffalo, black rhino and lion, while evenings unfold with sundowners on the riverbank and lantern-lit dinners under the stars.',
-  },
-  {
-    name: 'Kuthengo Lodge',
-    location: 'Liwonde National Park',
-    details:
-      'Set along the banks of the Shire River in Liwonde National Park, Kuthengo Lodge is an intimate, stylish retreat offering front-row seats to river life. Spacious tented suites open onto private decks where hippos grunt and elephants wander past. Days are filled with game drives across open floodplains and tranquil boat safaris that bring you astonishingly close to crocodiles and birdlife.',
-  },
-  {
-    name: 'Mvuu Lodge',
-    location: 'Liwonde National Park',
-    details:
-      'Nestled beneath towering baobabs in Liwonde National Park, Mvuu Lodge blends rustic charm with comfort in a spectacular riverside setting. Spectacular secluded suites with plunge pools and comfy tented chalets with private viewing decks overlook a lagoon frequently visited by elephants and antelope. Activities include game drives and serene boat safaris along the Shire River.',
-  },
-  {
-    name: 'Blue Zebra Island Lodge',
-    location: 'Mangochi, Lake Malawi',
-    details:
-      'Located on Nankoma Island within Lake Malawi National Park, Blue Zebra Island Lodge is a tropical escape surrounded by crystal-clear waters and golden beaches. Stylish safari-style tents and wooden chalets, some with private pools, are tucked among indigenous trees just steps from the lake. Days are spent kayaking, snorkelling among colourful cichlid fish, sailing at sunset or simply relaxing with your feet in the sand.',
-  },
-  {
-    name: 'Mumbo Island Lodge',
-    location: 'Mangochi, Lake Malawi',
-    details:
-      'A true barefoot luxury experience, Mumbo Island Lodge sits on a tiny, uninhabited island in the turquoise waters of Lake Malawi. Accessible only by boat, this eco-lodge offers rustic yet charming tents perched on rocky outcrops with uninterrupted lake views. Guests snorkel in some of the clearest freshwater in Africa, kayak around hidden coves, or unwind in hammocks overlooking the water.',
-  },
-  {
-    name: 'The Commonage',
-    location: 'Ntchisi Forest Reserve',
-    details:
-      'Perched on the edge of Ntchisi Forest Reserve, The Commonage offers cool mountain air and sweeping views over the Rift Valley. Guided forest walks reveal rare orchids, birds and endemic flora within ancient rainforest. The atmosphere is peaceful and restorative, ideal for travellers seeking respite between safari and lake experiences.',
-  },
-  {
-    name: 'Kachenga Bush Camp',
-    location: 'Nkhotakota Wildlife Reserve',
-    details:
-      'Situated within the vast wilderness of Nkhotakota Wildlife Reserve, Kachenga Bush Camp is an authentic and intimate safari camp. A perfect blend of comfort and nature in the beautiful chalets or the spacious camp site. Guests enjoy guided nature walks and hiking in one of Malawi\'s most untouched reserves, with evenings spent around the campfire beneath star-filled skies.',
-  },
-  {
-    name: 'Chelinda Lodge',
-    location: 'Nyika National Park',
-    details:
-      'Set high on the rolling grasslands of Nyika National Park, Chelinda Lodge feels like a Highland retreat with stone-and-timber cabins and roaring fireplaces overlooking vast open plains dotted with antelope and zebra. Guests explore on horseback, mountain bike or guided walks through wildflower-filled landscapes.',
-  },
-  {
-    name: 'Chimwala Camp',
-    location: 'Liwonde National Park',
-    details:
-      'Chimwala Camp offers a charming and comfortable safari base within Liwonde National Park. Surrounded by riverine woodland and open floodplains, the camp provides close access to exceptional wildlife viewing. Guests enjoy game drives and boat safaris along the Shire River, encountering elephants, hippos and abundant birdlife in an intimate setting.',
-  },
-  {
-    name: 'Africa Wild Truck',
-    location: 'Mulanje',
-    details:
-      'Set against the dramatic backdrop of Mount Mulanje, Africa Wild Truck provides a relaxed and adventurous base for exploring Malawi\'s most iconic mountain. Surrounded by tea estates and forest trails, guests can enjoy guided hikes to waterfalls, scenic viewpoints and cool mountain streams.',
-  },
-  {
-    name: 'Kaya Mawa',
-    location: 'Likoma Island, Lake Malawi',
-    details:
-      'Set on the remote shores of Likoma Island in the heart of Lake Malawi, Kaya Mawa is an intimate island retreat where barefoot luxury meets authentic Malawian charm. Surrounded by crystal-clear waters, secluded beaches, and dramatic granite rocks, the lodge blends beautifully into its natural surroundings. Guests can enjoy swimming, snorkeling, kayaking, sailing, and scuba diving in the warm waters of the lake, or simply unwind with a spa treatment and relaxed island dining.',
-  },
-  {
-    name: 'Zomba Forest Lodge',
-    location: 'Zomba Mountain',
-    details:
-      'Zomba Mountain offers cool air, forest trails and breathtaking viewpoints overlooking the plains below. Together, these mountain experiences reveal a different, serene side of Malawi.',
-  },
-].map((lodge) => ({
+const lodgeDetails = lodges.map((lodge) => ({
   ...lodge,
   gallery: buildLodgeGallery(lodge.name, lodge.location),
 }))
@@ -183,6 +108,8 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeLodge, setActiveLodge] = useState(null)
   const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const ourLodges = lodgeDetails.filter((lodge) => OUR_LODGE_NAMES.has(lodge.name))
+  const otherLodges = lodgeDetails.filter((lodge) => !OUR_LODGE_NAMES.has(lodge.name))
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 0)
@@ -331,37 +258,111 @@ export default function Navbar() {
                         'radial-gradient(circle at 20% 30%, #d8913a 0%, transparent 55%), radial-gradient(circle at 80% 75%, #1e6e1e 0%, transparent 55%)',
                     }}
                   />
-                  <div className="relative z-10 font-body text-[10px] tracking-widest uppercase text-earth-300 mb-3">
+                  <div className="relative z-10 font-body text-sm tracking-widest uppercase text-earth-300 mb-4 text-center">
                     Accommodation & Destination
                   </div>
-                  <div className="relative z-10 grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[70vh] overflow-y-auto pr-1">
-                    {lodgeDetails.map((lodge) => (
-                      <button
-                        key={lodge.name}
-                        type="button"
-                        onClick={() => openLodgeGallery(lodge)}
-                        className="p-4 bg-white/5 border border-white/10 hover:border-earth-300 hover:bg-white/10 transition-colors text-left"
-                      >
-                        <h4 className="font-display text-white text-lg font-bold leading-tight">{lodge.name}</h4>
-                        <p className="font-body text-earth-300 text-[11px] tracking-widest uppercase mt-1 mb-3">
-                          {lodge.location}
-                        </p>
-                        <p className="font-body text-xs text-white/65 tracking-wide uppercase">
-                          View gallery
-                        </p>
-                        {lodge.name === TONGOLE_LODGE_NAME && (
-                          <a
-                            href="https://tongole.com/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(event) => event.stopPropagation()}
-                            className="inline-flex items-center justify-center mt-3 bg-earth-500 hover:bg-earth-400 text-white px-3 py-1.5 font-body text-[10px] tracking-widest uppercase transition-colors"
+                  <div className="relative z-10 grid md:grid-cols-2 gap-6">
+                    <div className="max-h-[70vh] overflow-y-auto overscroll-contain pr-1">
+                      <div className="sticky top-0 z-10 bg-midnight/95 backdrop-blur-md py-2 font-display text-[13px] tracking-[0.18em] uppercase text-earth-200 mb-3">
+                        Our Lodges
+                      </div>
+                      <div className="grid gap-4">
+                        {ourLodges.map((lodge) => (
+                          <div
+                            key={lodge.name}
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => openLodgeGallery(lodge)}
+                            onKeyDown={(event) => {
+                              if (event.key === 'Enter' || event.key === ' ') {
+                                event.preventDefault()
+                                openLodgeGallery(lodge)
+                              }
+                            }}
+                            className="p-4 bg-white/5 border border-white/10 hover:border-earth-300 hover:bg-white/10 transition-colors text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-earth-300/70"
                           >
-                            Visit Page
-                          </a>
-                        )}
-                      </button>
-                    ))}
+                            <h4 className="font-display text-white text-lg font-bold leading-tight">{lodge.name}</h4>
+                            <p className="font-body text-earth-300 text-[11px] tracking-widest uppercase mt-1 mb-3">
+                              {lodge.location}
+                            </p>
+                            <div className="mt-3 flex items-center gap-3">
+                              {lodge.name === TONGOLE_LODGE_NAME && (
+                                <a
+                                  href="https://tongole.com/"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(event) => event.stopPropagation()}
+                                  className="inline-flex items-center justify-center bg-earth-500 hover:bg-earth-400 text-white px-3 py-1.5 font-body text-[10px] tracking-widest uppercase transition-colors"
+                                >
+                                  Visit Page
+                                </a>
+                              )}
+                              {lodge.name === KACHENGA_LODGE_NAME && (
+                                <a
+                                  href={KACHENGA_LODGE_URL}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(event) => event.stopPropagation()}
+                                  className="inline-flex items-center justify-center bg-earth-500 hover:bg-earth-400 text-white px-3 py-1.5 font-body text-[10px] tracking-widest uppercase transition-colors"
+                                >
+                                  Visit Page
+                                </a>
+                              )}
+                              <button
+                                type="button"
+                                onClick={(event) => {
+                                  event.stopPropagation()
+                                  openLodgeGallery(lodge)
+                                }}
+                                className="ml-auto font-body text-xs text-white/65 tracking-wide uppercase hover:text-earth-200 transition-colors"
+                              >
+                                View gallery
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="max-h-[70vh] overflow-y-auto overscroll-contain pr-1">
+                      <div className="sticky top-0 z-10 bg-midnight/95 backdrop-blur-md py-2 font-display text-[13px] tracking-[0.18em] uppercase text-earth-200 mb-3">
+                        Other Lodges
+                      </div>
+                      <div className="grid gap-4">
+                        {otherLodges.map((lodge) => (
+                          <div
+                            key={lodge.name}
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => openLodgeGallery(lodge)}
+                            onKeyDown={(event) => {
+                              if (event.key === 'Enter' || event.key === ' ') {
+                                event.preventDefault()
+                                openLodgeGallery(lodge)
+                              }
+                            }}
+                            className="p-4 bg-white/5 border border-white/10 hover:border-earth-300 hover:bg-white/10 transition-colors text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-earth-300/70"
+                          >
+                            <h4 className="font-display text-white text-lg font-bold leading-tight">{lodge.name}</h4>
+                            <p className="font-body text-earth-300 text-[11px] tracking-widest uppercase mt-1 mb-3">
+                              {lodge.location}
+                            </p>
+                            <div className="mt-3 flex items-center">
+                              <button
+                                type="button"
+                                onClick={(event) => {
+                                  event.stopPropagation()
+                                  openLodgeGallery(lodge)
+                                }}
+                                className="ml-auto font-body text-xs text-white/65 tracking-wide uppercase hover:text-earth-200 transition-colors"
+                              >
+                                View gallery
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -416,7 +417,28 @@ export default function Navbar() {
                 Our Lodges
               </div>
               <div className="pl-3 flex flex-col gap-2">
-                {lodgeDetails.map((lodge) => (
+                {ourLodges.map((lodge) => (
+                  <button
+                    key={lodge.name}
+                    type="button"
+                    onClick={() => {
+                      openLodgeGallery(lodge)
+                      setMenuOpen(false)
+                    }}
+                    className={`font-body text-sm text-left hover:text-earth-400 transition-colors ${
+                      scrolled ? 'text-white/75' : 'text-midnight/70'
+                    }`}
+                  >
+                    {lodge.name}
+                  </button>
+                ))}
+              </div>
+
+              <div className={`mt-4 font-body text-sm tracking-wider uppercase mb-2 ${scrolled ? 'text-white' : 'text-midnight'}`}>
+                Other Lodges
+              </div>
+              <div className="pl-3 flex flex-col gap-2">
+                {otherLodges.map((lodge) => (
                   <button
                     key={lodge.name}
                     type="button"
