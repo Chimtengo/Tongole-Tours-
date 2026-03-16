@@ -68,12 +68,38 @@ const TONGOLE_YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/pljEv_UjYCk'
 const KACHENGA_LODGE_NAME = 'Kachenga Bush Camp'
 const KACHENGA_LODGE_URL = 'https://kachengabushcamp.mw/'
 const OUR_LODGE_NAMES = new Set(['Tongole Wilderness Retreat', 'Kachenga Bush Camp'])
+const FALLBACK_GALLERY = [
+  {
+    src: '/images/hero/slide-1.webp',
+    caption: 'Signature lodge experience',
+  },
+  {
+    src: '/images/hero/slide-2.webp',
+    caption: 'Wildlife and guided activities',
+  },
+  {
+    src: '/images/hero/slide-3.webp',
+    caption: 'Destination highlights',
+  },
+]
 
-const buildLodgeGallery = (name, location) => {
-  const slug = name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '')
+const buildLodgeGallery = (name, location, gallerySlug) => {
+  const slug = gallerySlug
+    || name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '')
+
+  const useFallback = !gallerySlug
+
+  if (useFallback) {
+    return FALLBACK_GALLERY.map((image) => ({
+      src: image.src,
+      alt: `${name} experience`,
+      caption: image.caption,
+      destination: location,
+    }))
+  }
 
   return [
     {
@@ -99,7 +125,7 @@ const buildLodgeGallery = (name, location) => {
 
 const lodgeDetails = lodges.map((lodge) => ({
   ...lodge,
-  gallery: buildLodgeGallery(lodge.name, lodge.location),
+  gallery: buildLodgeGallery(lodge.name, lodge.location, lodge.gallerySlug),
 }))
 
 export default function Navbar() {
@@ -241,7 +267,7 @@ export default function Navbar() {
                   scrolled ? 'text-white/90 hover:text-earth-300' : 'text-midnight/80 hover:text-earth-500'
                 }`}
               >
-                Our Lodges
+                Lodges
                 <ChevronDownIcon className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" />
               </button>
               <div
@@ -281,6 +307,14 @@ export default function Navbar() {
                             }}
                             className="p-4 bg-white/5 border border-white/10 hover:border-earth-300 hover:bg-white/10 transition-colors text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-earth-300/70"
                           >
+                            <div className="relative h-28 mb-4 overflow-hidden border border-white/10">
+                              <img
+                                src={lodge.gallery?.[0]?.src}
+                                alt={lodge.gallery?.[0]?.alt || lodge.name}
+                                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-midnight/60 via-midnight/10 to-transparent" />
+                            </div>
                             <h4 className="font-display text-white text-lg font-bold leading-tight">{lodge.name}</h4>
                             <p className="font-body text-earth-300 text-[11px] tracking-widest uppercase mt-1 mb-3">
                               {lodge.location}
@@ -343,6 +377,14 @@ export default function Navbar() {
                             }}
                             className="p-4 bg-white/5 border border-white/10 hover:border-earth-300 hover:bg-white/10 transition-colors text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-earth-300/70"
                           >
+                            <div className="relative h-28 mb-4 overflow-hidden border border-white/10">
+                              <img
+                                src={lodge.gallery?.[0]?.src}
+                                alt={lodge.gallery?.[0]?.alt || lodge.name}
+                                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-midnight/60 via-midnight/10 to-transparent" />
+                            </div>
                             <h4 className="font-display text-white text-lg font-bold leading-tight">{lodge.name}</h4>
                             <p className="font-body text-earth-300 text-[11px] tracking-widest uppercase mt-1 mb-3">
                               {lodge.location}
@@ -501,7 +543,7 @@ export default function Navbar() {
 
             <div className="relative z-10 grid lg:grid-cols-[1.8fr,1fr]">
               <div className="bg-black/30 border-b lg:border-b-0 lg:border-r border-white/10">
-                <div className="aspect-[16/10] bg-black/35">
+                <div className="aspect-[16/10] bg-black/35 relative group">
                   {isTongolePopup ? (
                     <iframe
                       src={TONGOLE_YOUTUBE_EMBED_URL}
@@ -518,30 +560,37 @@ export default function Navbar() {
                       className="w-full h-full object-cover"
                     />
                   )}
+
+                  {!isTongolePopup && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={goToPreviousImage}
+                        aria-label="Previous image"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-white/20 bg-midnight/70 text-earth-200 hover:text-white hover:border-earth-300 transition-colors inline-flex items-center justify-center opacity-0 group-hover:opacity-100"
+                      >
+                        ‹
+                      </button>
+                      <button
+                        type="button"
+                        onClick={goToNextImage}
+                        aria-label="Next image"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-white/20 bg-midnight/70 text-earth-200 hover:text-white hover:border-earth-300 transition-colors inline-flex items-center justify-center opacity-0 group-hover:opacity-100"
+                      >
+                        ›
+                      </button>
+                    </>
+                  )}
                 </div>
                 {isTongolePopup ? (
                   <div className="px-4 py-3 border-t border-white/10 font-body text-xs text-white/70">
                     Featured video above. Browse lodge gallery thumbnails on the right.
                   </div>
                 ) : (
-                  <div className="flex items-center justify-between px-4 py-3 border-t border-white/10">
-                    <button
-                      type="button"
-                      onClick={goToPreviousImage}
-                      className="font-body text-xs tracking-widest uppercase text-earth-300 hover:text-earth-200 transition-colors"
-                    >
-                      Previous
-                    </button>
+                  <div className="flex items-center justify-center px-4 py-3 border-t border-white/10">
                     <div className="font-body text-xs text-white/70">
                       {activeImageIndex + 1} / {activeLodge.gallery.length}
                     </div>
-                    <button
-                      type="button"
-                      onClick={goToNextImage}
-                      className="font-body text-xs tracking-widest uppercase text-earth-300 hover:text-earth-200 transition-colors"
-                    >
-                      Next
-                    </button>
                   </div>
                 )}
               </div>

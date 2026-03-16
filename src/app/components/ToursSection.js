@@ -44,7 +44,7 @@ export default function ToursSection() {
               className={`tour-card section-reveal delay-${((i % 3) + 1) * 100} group bg-white border border-earth-100 overflow-hidden`}
             >
               {/* Image */}
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-72 overflow-hidden">
                 <img
                   src={tour.image}
                   alt={tour.name}

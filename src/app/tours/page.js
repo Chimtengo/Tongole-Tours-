@@ -9,14 +9,12 @@ const itineraryDescriptions = {
     'This itinerary offers travellers a refreshing blend of cool mountain air, lush greenery, and crystal-clear lakeside views.Scenic road trips, Nature and eco-tourism experiences, Photography opportunities and Relaxation combined with light adventure.',
   ],
   'wings-over-malawi': [
-    'Wings Over Malawi is an exclusive fly-in safari experience that allows guests to discover the beauty of Malawi from both the sky and the ground. From the air, travellers will enjoy panoramic views of the vast waters of Lake Malawi, sparkling like a silver ribbon beneath the sun, the wildlife-rich plains of Liwonde National Park, home to elephants, hippos, and diverse birdlife and the thick Nkhotakota Wildlife Reserve, known for its famous translocated elephants from Liwonde and rich in bird species.',
-    'Each landing opens the door to curated ground experiences from game drives, boat safaris, guided bush walks, cultural encounters, and lakeside relaxation before lifting off again to the next extraordinary location.',
-    'Wings over Malawi offers Maximum comfort with minimal travel time, access to remote and exclusive destinations, spectacular aerial photography opportunities and seamless luxury safari experience and it is perfect for discerning travelers seeking adventure, efficiency, and unforgettable aerial views a journey that truly captures the Warm Heart of Africa from above.',
+    'This is an exclusive fly-in safari experience that allows guests to discover the beauty of Malawi from both the sky and the ground. From the air, travellers will enjoy panoramic views of the vast waters of Lake Malawi, sparkling like a silver ribbon beneath the sun, and the wildlife-rich plains of National Parks and Wildlife Reserve leaving with them unforgettable aerial views of a journey that truly captures the Warm Heart of Africa from above.',
+    'Each landing opens the door to curated ground experiences from game drives, boat safaris, guided bush walks, cultural encounters, and lakeside relaxation before lifting off again to the next extraordinary location. Wings over Malawi offers Maximum comfort with minimal travel time, access to remote and exclusive destinations, and it is perfect for discerning travellers seeking adventure and efficiency.',
   ],
   'explore-malawi': [
-    'Explore Malawi is an extraordinary fly-in safari journey showcasing the country\'s most diverse and breathtaking landscapes from thriving wildlife reserves to pristine island shores and dramatic highland plateaus.The adventure begins at Majete Wildlife Reserve, a conservation success story where the Big Five roam freely. Guests enjoy thrilling game drives and luxury bush stays surrounded by untouched wilderness.',
-    'Next is Liwonde National Park, renowned for its elephants, hippos, and boat safaris along the Shire River. From there, the journey continues to the tranquil waters of Likoma Island, set within Lake Malawi. Here, white sandy beaches, crystal-clear waters, and laid-back island life offer the perfect contrast to safari adventure',
-    'The journey then explores the remote wilderness of Nkhotakota Wildlife Reserve, an unspoiled haven for walking safaris and intimate nature encounters.The experience concludes in the cool, rolling highlands of Nyika National Park, where sweeping grasslands, zebra herds, and breathtaking vistas provide a dramatic finale.',
+    'Explore Malawi is a spectacular fly-in journey across Malawi, designed to showcase the country’s incredible diversity from southern wildlife reserves of Majete where the Big Five roam freely and Liwonde with its boat safaris on the majestic Shire river, to northern Lake Malawi island and highland plateaus of Nyika National Parks',
+    'Traveling seamlessly by light aircraft, this itinerary connects Malawi’s south, centre, and north, creating a smooth and immersive safari that combines wildlife, wilderness, and lake experiences in one unforgettable adventure in the sky.',
   ],
   'ultimate-big-5': [
     'The Ultimate Big Five is an immersive road safari through Malawi\'s premier wildlife destinations, offering thrilling encounters with Africa\'s most iconic animals in diverse and unspoiled landscapes. This journey combines adventure, conservation success stories, and authentic bush experiences all connected by scenic drives through the Warm Heart of Africa.',
@@ -52,15 +50,9 @@ export default function Tours() {
       >
         <div className="absolute inset-0 bg-midnight/75" />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <span className="font-body text-earth-300 text-xs tracking-widest uppercase">
-            Signature Journeys
-          </span>
           <h1 className="font-display text-white text-5xl md:text-7xl font-bold mt-3 mb-6">
             Our <em className="text-earth-300 not-italic">Tours</em>
           </h1>
-          <p className="font-accent text-white/70 text-xl italic max-w-2xl">
-            7 immersive ways to discover the real Malawi
-          </p>
         </div>
       </section>
 

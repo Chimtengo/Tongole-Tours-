@@ -119,6 +119,7 @@ body {
   box-shadow: 0 24px 60px rgba(0,0,0,0.13);
 }
 
+
 /* ─── Nav underline ──────────────────────────────────────── */
 .nav-link::after {
   content: '';
@@ -127,6 +128,38 @@ body {
   background: #d8913a;
   width: 0;
   transition: width 0.3s ease;
+}
+
+.whatsapp-float {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  background: #25d366;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+  z-index: 80;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.whatsapp-float:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.whatsapp-icon {
+  width: 26px;
+  height: 26px;
 }
 .nav-link:hover::after { width: 100%; }
 

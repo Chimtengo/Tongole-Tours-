@@ -1,9 +1,10 @@
-import { notFound } from 'next/navigation'
+  import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { tours, getTourBySlug } from '../../data/tours'
 import { getLodgeByName } from '../../data/lodges'
+import ItineraryImageSlider from '../../components/ItineraryImageSlider'
 
 export async function generateStaticParams() {
   return tours.map((tour) => ({ slug: tour.slug }))
@@ -34,6 +35,17 @@ export default async function TourDetailPage({ params }) {
     }
     return acc
   }, {})
+  const slugify = (value) =>
+    String(value || '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '')
+
+  const buildItineraryImageSet = (gallerySlug, fallbackImage) => {
+    if (!gallerySlug) return [fallbackImage, fallbackImage, fallbackImage]
+    const base = `/images/lodges/${gallerySlug}`
+    return [`${base}/01.jpg`, `${base}/02.jpg`, `${base}/03.jpg`, fallbackImage]
+  }
   const formatDayRanges = (days) => {
     const numbers = days
       .map((day) => {
@@ -65,12 +77,13 @@ export default async function TourDetailPage({ params }) {
 
   const accommodationEntries = Object.entries(accommodationSchedule).map(([name, days], index) => {
     const lodge = getLodgeByName(name)
+    const fallbackImage = tour.experiences?.[index]?.image || tour.image
     return {
       name,
       days,
       dayRange: formatDayRanges(days),
       lodge,
-      image: tour.experiences?.[index]?.image || tour.image,
+      imageSet: buildItineraryImageSet(lodge?.gallerySlug, fallbackImage),
     }
   })
 
@@ -136,13 +149,8 @@ export default async function TourDetailPage({ params }) {
           <div className="space-y-16">
             {accommodationEntries.map((entry, i) => (
               <div key={entry.name} className="grid md:grid-cols-2 overflow-hidden shadow-xl">
-                <div className={`relative h-72 md:h-auto min-h-[320px] overflow-hidden ${i % 2 === 1 ? 'md:order-2' : ''}`}>
-                  <img
-                    src={entry.image}
-                    alt={entry.name}
-                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-midnight/40 to-transparent" />
+                <div className={`relative ${i % 2 === 1 ? 'md:order-2' : ''}`}>
+                  <ItineraryImageSlider images={entry.imageSet} alt={entry.name} />
                   <div className="absolute top-6 left-6 w-16 h-16 rounded-full bg-earth-500 flex items-center justify-center">
                     <span className="font-display text-white font-bold text-[10px] tracking-widest uppercase text-center px-2">
                       {entry.dayRange}

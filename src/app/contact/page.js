@@ -40,7 +40,7 @@ export default function Contact() {
             Plan Your <em className="text-earth-300 not-italic">Journey</em>
           </h1>
           <p className="font-accent text-white/70 text-xl italic max-w-2xl">
-            Let us craft your perfect Malawi experience
+            Let us help craft your perfect Malawi experience
           </p>
         </div>
       </section>
@@ -243,7 +243,7 @@ export default function Contact() {
             <div className="aspect-[16/9] w-full">
               <iframe
                 title="Tongole Wilderness Lodge Map"
-                src="https://www.google.com/maps/place/Tongole+Wilderness+Lodge/@-12.8088381,34.1881717,10.25z/data=!4m10!3m9!1s0x191e43c58003bb39:0x3a76337950cd4eae!5m3!1s2026-04-03!4m1!1i2!8m2!3d-12.9112962!4d34.0502049!16s%2Fg%2F1tff0f15!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDMwOS4wIKXMDSoASAFQAw%3D%3D"
+                src="https://maps.google.com/maps?q=Tongole%20Wilderness%20Lodge&t=&z=11&ie=UTF8&iwloc=&output=embed"
                 className="w-full h-full"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
