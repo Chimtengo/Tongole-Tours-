@@ -83,7 +83,16 @@ const FALLBACK_GALLERY = [
   },
 ]
 
-const buildLodgeGallery = (name, location, gallerySlug) => {
+const DEFAULT_GALLERY_CAPTIONS = [
+  'Signature lodge experience',
+  'Wildlife and guided activities',
+  'Destination highlights',
+  'Island views and lagoons',
+  'Secluded beaches',
+  'Relaxed lodge moments',
+]
+
+const buildLodgeGallery = (name, location, gallerySlug, galleryCount = 3, galleryExt = 'jpg') => {
   const slug = gallerySlug
     || name
       .toLowerCase()
@@ -101,31 +110,26 @@ const buildLodgeGallery = (name, location, gallerySlug) => {
     }))
   }
 
-  return [
-    {
-      src: `/images/lodges/${slug}/01.jpg`,
-      alt: `${name} signature view`,
-      caption: 'Signature lodge experience',
+  return Array.from({ length: galleryCount }, (_, index) => {
+    const position = String(index + 1).padStart(2, '0')
+    return {
+      src: `/images/lodges/${slug}/${position}.${galleryExt}`,
+      alt: `${name} gallery image ${index + 1}`,
+      caption: DEFAULT_GALLERY_CAPTIONS[index] || 'Lodge highlights',
       destination: location,
-    },
-    {
-      src: `/images/lodges/${slug}/02.jpg`,
-      alt: `${name} wildlife and activities`,
-      caption: 'Wildlife and guided activities',
-      destination: location,
-    },
-    {
-      src: `/images/lodges/${slug}/03.jpg`,
-      alt: `${name} surrounding destination`,
-      caption: 'Destination highlights',
-      destination: location,
-    },
-  ]
+    }
+  })
 }
 
 const lodgeDetails = lodges.map((lodge) => ({
   ...lodge,
-  gallery: buildLodgeGallery(lodge.name, lodge.location, lodge.gallerySlug),
+  gallery: buildLodgeGallery(
+    lodge.name,
+    lodge.location,
+    lodge.gallerySlug,
+    lodge.galleryCount,
+    lodge.galleryExt
+  ),
 }))
 
 export default function Navbar() {

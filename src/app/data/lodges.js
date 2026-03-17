@@ -59,6 +59,8 @@ const lodges = [
     name: 'Kachenga Bush Camp',
     location: 'Nkhotakota Wildlife Reserve',
     gallerySlug: 'kachenga-bush-camp',
+    galleryCount: 6,
+    galleryExt: 'jpeg',
     details:
       'Situated within the vast wilderness of Nkhotakota Wildlife Reserve, Kachenga Bush Camp is an authentic and intimate safari camp. A perfect blend of comfort and nature in the beautiful chalets or the spacious camp site. Guests enjoy guided nature walks and hiking in one of Malawi\'s most untouched reserves, with evenings spent around the campfire beneath star-filled skies.',
   },
@@ -87,6 +89,8 @@ const lodges = [
     name: 'Kaya Mawa',
     location: 'Likoma Island, Lake Malawi',
     gallerySlug: 'kaya-mawa',
+    galleryCount: 6,
+    galleryExt: 'jpeg',
     details:
       'Set on the remote shores of Likoma Island in the heart of Lake Malawi, Kaya Mawa is an intimate island retreat where barefoot luxury meets authentic Malawian charm. Surrounded by crystal-clear waters, secluded beaches, and dramatic granite rocks, the lodge blends beautifully into its natural surroundings. Guests can enjoy swimming, snorkeling, kayaking, sailing, and scuba diving in the warm waters of the lake, or simply unwind with a spa treatment and relaxed island dining.',
   },
