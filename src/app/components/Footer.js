@@ -31,7 +31,7 @@ const lodgeLinks = [
 
 const contactItems = [
   { label: 'Location', value: 'Lilongwe, Malawi' },
-  { label: 'Phone', value: '+265 873 128 39', href: 'tel:+26587312839' },
+  { label: 'Phone', value: '+265 987 312 839', href: 'tel:+265987312839' },
   { label: 'Email', value: 'info@tongoletours.com', href: 'mailto:info@tongoletours.com' },
 ]
 

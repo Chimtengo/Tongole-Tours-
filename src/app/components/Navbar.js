@@ -248,9 +248,9 @@ export default function Navbar() {
                 <MailIcon className="w-3.5 h-3.5 text-sky-400" />
                 info@tongoletours.com
               </a>
-              <a href="tel:+26587312839" className="hover:text-earth-300 transition-colors inline-flex items-center gap-1.5">
+              <a href="tel:+265987312839" className="hover:text-earth-300 transition-colors inline-flex items-center gap-1.5">
                 <PhoneIcon className="w-3.5 h-3.5 text-emerald-400" />
-                +265 873 128 39
+                +265 987 312 839
               </a>
             </div>
             <div className="ml-auto flex items-center gap-3 text-white/75">

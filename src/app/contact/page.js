@@ -6,7 +6,7 @@ import Footer  from '../components/Footer'
 
 const contactInfo = [
   { icon: '📍', label: 'Office',       value: 'Lilongwe, Malawi' },
-  { icon: '📞', label: 'Phone',        value: '+265 873 128 39' },
+  { icon: '📞', label: 'Phone',        value: '+265 987 312 839' },
   { icon: '✉️', label: 'Email',        value: 'info@tongoletours.com' },
   { icon: '🕐', label: 'Office Hours', value: 'Mon–Fri: 8:00am – 5:00pm\nSat: 9:00am – 1:00pm' },
 ]
@@ -155,7 +155,7 @@ export default function Contact() {
                         </label>
                         <input
                           name="phone" type="tel" value={form.phone} onChange={handleChange}
-                          placeholder="+265 873 128 39"
+                          placeholder="+265 987 312 839"
                           className="w-full border border-earth-200 focus:border-earth-400
                                      px-4 py-3 text-sm font-body outline-none transition-colors bg-earth-50"
                         />
