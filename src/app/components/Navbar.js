@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import Logo from './Logo'
 import { lodges } from '../data/lodges'
 
@@ -130,7 +130,6 @@ const lodgeDetails = lodges.map((lodge) => ({
 
 export default function Navbar() {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeLodge, setActiveLodge] = useState(null)
@@ -208,14 +207,22 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    const lodgeParam = searchParams?.get('lodge')
-    if (!lodgeParam) return
-    const decoded = decodeURIComponent(lodgeParam)
-    const match = lodgeDetails.find((lodge) => lodge.name.toLowerCase() === decoded.toLowerCase())
-    if (match) {
-      openLodgeGallery(match)
+    const handleFromUrl = () => {
+      if (typeof window === 'undefined') return
+      const params = new URLSearchParams(window.location.search)
+      const lodgeParam = params.get('lodge')
+      if (!lodgeParam) return
+      const decoded = decodeURIComponent(lodgeParam)
+      const match = lodgeDetails.find((lodge) => lodge.name.toLowerCase() === decoded.toLowerCase())
+      if (match) {
+        openLodgeGallery(match)
+      }
     }
-  }, [searchParams, lodgeDetails])
+
+    handleFromUrl()
+    window.addEventListener('popstate', handleFromUrl)
+    return () => window.removeEventListener('popstate', handleFromUrl)
+  }, [lodgeDetails])
 
   useEffect(() => {
     const handleOpenLodge = (event) => {
