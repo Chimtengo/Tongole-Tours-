@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import Logo from './Logo'
 
@@ -29,8 +31,7 @@ const lodgeLinks = [
 
 const contactItems = [
   { label: 'Location', value: 'Lilongwe, Malawi' },
-  { label: 'Phone 1', value: '+265 882 437 039', href: 'tel:+265882437039' },
-  { label: 'Phone 2', value: '+265 992 775 636', href: 'tel:+265992775636' },
+  { label: 'Phone', value: '+265 873 128 39', href: 'tel:+26587312839' },
   { label: 'Email', value: 'info@tongoletours.com', href: 'mailto:info@tongoletours.com' },
 ]
 
@@ -86,11 +87,20 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-body text-xs tracking-widest uppercase text-earth-400 mb-6">Our Lodges</h4>
+            <h4 className="font-body text-xs tracking-widest uppercase text-earth-400 mb-6">Quick Links to Lodges</h4>
             <ul className="space-y-3">
               {lodgeLinks.map((lodge) => (
-                <li key={lodge} className="font-body text-white/50 text-sm">
-                  {lodge}
+                <li key={lodge}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const event = new CustomEvent('openLodge', { detail: lodge })
+                      window.dispatchEvent(event)
+                    }}
+                    className="font-body text-white/50 hover:text-earth-300 text-sm transition-colors"
+                  >
+                    {lodge}
+                  </button>
                 </li>
               ))}
             </ul>

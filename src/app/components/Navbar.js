@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import Logo from './Logo'
 import { lodges } from '../data/lodges'
 
@@ -130,6 +130,7 @@ const lodgeDetails = lodges.map((lodge) => ({
 
 export default function Navbar() {
   const pathname = usePathname()
+  const searchParams = useSearchParams()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeLodge, setActiveLodge] = useState(null)
@@ -206,6 +207,30 @@ export default function Navbar() {
     setActiveImageIndex((prev) => (prev - 1 + activeLodge.gallery.length) % activeLodge.gallery.length)
   }
 
+  useEffect(() => {
+    const lodgeParam = searchParams?.get('lodge')
+    if (!lodgeParam) return
+    const decoded = decodeURIComponent(lodgeParam)
+    const match = lodgeDetails.find((lodge) => lodge.name.toLowerCase() === decoded.toLowerCase())
+    if (match) {
+      openLodgeGallery(match)
+    }
+  }, [searchParams, lodgeDetails])
+
+  useEffect(() => {
+    const handleOpenLodge = (event) => {
+      const lodgeName = event?.detail
+      if (!lodgeName) return
+      const match = lodgeDetails.find((lodge) => lodge.name.toLowerCase() === String(lodgeName).toLowerCase())
+      if (match) {
+        openLodgeGallery(match)
+      }
+    }
+
+    window.addEventListener('openLodge', handleOpenLodge)
+    return () => window.removeEventListener('openLodge', handleOpenLodge)
+  }, [lodgeDetails])
+
   const activeImage = activeLodge?.gallery?.[activeImageIndex]
   const isTongolePopup = activeLodge?.name === TONGOLE_LODGE_NAME
 
@@ -223,9 +248,9 @@ export default function Navbar() {
                 <MailIcon className="w-3.5 h-3.5 text-sky-400" />
                 info@tongoletours.com
               </a>
-              <a href="tel:+265882437039" className="hover:text-earth-300 transition-colors inline-flex items-center gap-1.5">
+              <a href="tel:+26587312839" className="hover:text-earth-300 transition-colors inline-flex items-center gap-1.5">
                 <PhoneIcon className="w-3.5 h-3.5 text-emerald-400" />
-                +265 882 437 039
+                +265 873 128 39
               </a>
             </div>
             <div className="ml-auto flex items-center gap-3 text-white/75">
