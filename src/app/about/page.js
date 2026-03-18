@@ -222,9 +222,9 @@ export default function About() {
 
             <div>
               <img
-                src="/images/about/commitment.jpg"
+                src="/images/about/commitment.jpeg"
                 alt="Conservation in Malawi"
-                className="w-full h-[450px] object-cover opacity-80"
+                className="w-full h-[520px] md:h-[560px] object-cover opacity-80"
               />
             </div>
           </div>

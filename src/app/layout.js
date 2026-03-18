@@ -4,6 +4,11 @@ export const metadata = {
   title: 'Tongole Tours | Experience Malawi the Indigenous Way',
   description:
     'An indigenous Malawian-run tour operator providing immersive cultural, wilderness, and adventure experiences.',
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
 }
 
 export default function RootLayout({ children }) {

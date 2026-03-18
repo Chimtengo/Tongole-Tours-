@@ -10,19 +10,21 @@ import Image from 'next/image'
  *
  * By default dark=true since Navbar & Footer are always dark.
  */
-export default function Logo({ size = 'md', dark = true }) {
+export default function Logo({ size = 'md', dark = true, width, height, scale = 1 }) {
   const sizes = {
-    sm: { w: 90,  h: 40 },
-    md: { w: 140, h: 62 },
-    lg: { w: 190, h: 84 },
+    sm: { w: 100, h: 45 },
+    md: { w: 200, h: 90 },
+    lg: { w: 250, h: 112 },
   }
   const s = sizes[size]
+  const w = width ?? s.w
+  const h = height ?? s.h
 
   return (
     <Link href="/" className="flex items-center group select-none">
-      <div style={{ width: s.w, height: s.h, position: 'relative', flexShrink: 0 }}>
+      <div style={{ width: w, height: h, position: 'relative', flexShrink: 0 }}>
         <Image
-          src="/logo.jpeg"
+          src="/logo.png"
           alt="Tongole Tours and Travel"
           fill
           className="object-contain transition-opacity duration-300 group-hover:opacity-85"
@@ -33,9 +35,13 @@ export default function Logo({ size = 'md', dark = true }) {
                   // and use multiply to dissolve the white
                   filter: 'brightness(1.15)',
                   mixBlendMode: 'screen',
+                  transform: `scale(${scale})`,
+                  transformOrigin: 'left center',
                 }
               : {
                   mixBlendMode: 'multiply',
+                  transform: `scale(${scale})`,
+                  transformOrigin: 'left center',
                 }
           }
           priority

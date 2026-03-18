@@ -7,7 +7,7 @@ export const tours = [
     tagline:   'The ultimate luxury overland journey through Malawi\'s finest wild places',
     duration:  '12 Days / 11 Nights',
     type:      'Luxury Road Safari',
-    target:    'International Luxury Travellers',
+    target:    'Luxury Travellers',
     price:     'From USD 4,800 per person',
     image:     '/images/tours/forest-lake-drive.jpeg',
     heroImage: '/images/tours/forest-lake-drive-hero.jpg',
