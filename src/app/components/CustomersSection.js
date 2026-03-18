@@ -2,19 +2,19 @@ const testimonials = [
   {
     quote:
       'Tongole Tours gave us the most authentic Malawi experience. Every detail felt thoughtful and personal.',
-    name: 'Sarah M.',
+    name: 'Rosemarie C.',
     location: 'United States',
   },
   {
     quote:
       'From Liwonde to Lake Malawi, the team was professional, warm, and deeply knowledgeable about every place.',
-    name: 'David K.',
+    name: 'Hope S.',
     location: 'United Kingdom',
   },
   {
     quote:
       'We asked for a custom family itinerary and they delivered beyond our expectations. Highly recommended.',
-    name: 'Aisha T.',
+    name: 'Raphael C.',
     location: 'Kenya',
   },
 ]
